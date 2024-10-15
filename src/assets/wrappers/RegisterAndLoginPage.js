@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.section`
   min-height: 100vh;
@@ -6,7 +6,7 @@ const Wrapper = styled.section`
   align-items: center;
   .logo {
     display: block;
-    margin: 0 auto;
+    margin: auto;
     margin-bottom: 1.38rem;
   }
   .form {
