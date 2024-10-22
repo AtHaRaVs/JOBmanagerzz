@@ -22,7 +22,7 @@ const Links = [
   },
   {
     text: "profile",
-    path: "profle",
+    path: "profile",
     icon: <ImProfile />,
   },
   {
