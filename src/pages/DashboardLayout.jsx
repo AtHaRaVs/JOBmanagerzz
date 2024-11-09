@@ -2,14 +2,9 @@ import { Outlet } from "react-router-dom";
 import { BigSidebar, SmallSidebar, Navbar } from "../components";
 import Wrapper from "../assets/wrappers/Dashboard";
 import { createContext, useContext, useState } from "react";
+import { checkDefaultTheme } from "../App";
 
 const dashboardContext = createContext();
-
-const checkDefaultTheme = () => {
-  const isDarkTheme = localStorage.getItem("darkTheme") === "true";
-  document.body.classList.toggle("dark-theme", isDarkTheme);
-  return isDarkTheme;
-};
 
 const DashboardLayout = () => {
   const user = { name: "Jhon" };
