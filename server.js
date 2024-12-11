@@ -111,6 +111,17 @@ app.delete("/api/v1/jobs/:id", (req, res) => {
   res.status(200).json({ message: "job deleted" });
 });
 
+// page not found and generic error middleware.............................................................................
+
+app.use("*", (req, res) => {
+  res.status(404).json({ message: "sorry page not found" });
+});
+
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(500).json({ message: "something went wrong" });
+});
+
 //sever start.............................................................................................................
 
 const port = process.env.PORT || 5100;
