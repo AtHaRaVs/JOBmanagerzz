@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import Job from "../models/jobModels.js";
 
 // temporary data.............................................................................................................
 
@@ -16,15 +17,7 @@ export const getAllJobs = async (req, res) => {
 export const createJob = async (req, res) => {
   const { company, position } = req.body;
 
-  if (!company || !position) {
-    return res
-      .status(400)
-      .json({ message: "Please provide company and position" });
-  }
-
-  const id = nanoid(10);
-  const job = { id, company, position };
-  jobs.push(job);
+  const job = await Job.create({ company, position });
 
   res.status(201).json({ job });
 };
