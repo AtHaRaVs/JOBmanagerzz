@@ -1,5 +1,6 @@
 // import { nanoid } from "nanoid";
 import Job from "../models/jobModels.js";
+import { StatusCodes } from "http-status-codes";
 
 // // temporary data.............................................................................................................
 
@@ -12,14 +13,14 @@ import Job from "../models/jobModels.js";
 
 export const getAllJobs = async (req, res) => {
   const jobs = await Job.find({});
-  res.status(200).json({ jobs });
+  res.status(StatusCodes.OK).json({ jobs });
 };
 
 export const createJob = async (req, res) => {
   const { company, position } = req.body;
 
   const job = await Job.create({ company, position });
-  res.status(201).json({ job });
+  res.status(StatusCodes.CREATED).json({ job });
 };
 
 export const getJob = async (req, res) => {
@@ -30,7 +31,7 @@ export const getJob = async (req, res) => {
   if (!job) {
     return res.status(404).json({ message: `Job with the ${id} doesnt exist` });
   }
-  return res.status(200).json({ job });
+  return res.status(StatusCodes.OK).json({ job });
 };
 
 export const updateJob = async (req, res) => {
@@ -41,7 +42,7 @@ export const updateJob = async (req, res) => {
     return res.status(404).json({ message: `job with id ${id} doesnt exist` });
   }
 
-  res.status(200).json({ message: "job modified", job: updatedJob });
+  res.status(StatusCodes.OK).json({ message: "job modified", job: updatedJob });
 };
 
 export const deleteJob = async (req, res) => {
@@ -52,5 +53,5 @@ export const deleteJob = async (req, res) => {
     return res.status(404).json({ message: `job with id ${id} doesnt exist` });
   }
 
-  res.status(200).json({ message: "job deleted", job: removedJob });
+  res.status(StatusCodes.OK).json({ message: "job deleted", job: removedJob });
 };
