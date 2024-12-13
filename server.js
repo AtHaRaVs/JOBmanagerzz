@@ -7,7 +7,13 @@ import express from "express";
 import morgan from "morgan";
 import mongoose from "mongoose";
 
+// router imports
+
 import jobRouter from "./routes/jobRouter.js";
+
+// middleware imports
+
+import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
 
 //middlewares.............................................................................................................
 
@@ -28,10 +34,7 @@ app.use("*", (req, res) => {
   res.status(404).json({ message: "sorry page not found" });
 });
 
-app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).json({ message: "something went wrong" });
-});
+app.use(errorHandlerMiddleware);
 
 //sever start.............................................................................................................
 
