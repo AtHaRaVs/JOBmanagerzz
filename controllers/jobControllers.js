@@ -2,7 +2,6 @@
 import Job from "../models/jobModels.js";
 import { StatusCodes } from "http-status-codes";
 import { NotFoundError } from "../errors/customError.js";
-import { validateTest } from "../middlewares/validationMiddleware.js";
 
 // // temporary data.............................................................................................................
 
