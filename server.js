@@ -10,6 +10,7 @@ import mongoose from "mongoose";
 // router imports
 
 import jobRouter from "./routes/jobRouter.js";
+import authRouter from "./routes/authRouter.js";
 
 // middleware imports
 
@@ -27,6 +28,7 @@ app.use(express.json());
 // CRUD API CALLS.............................................................................................................
 
 app.use("/api/v1/jobs", jobRouter);
+app.use("/api/v1/auth", authRouter);
 
 // page not found and generic error middleware.............................................................................
 
