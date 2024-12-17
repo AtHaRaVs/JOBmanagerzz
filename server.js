@@ -6,6 +6,7 @@ dotenv.config();
 import express from "express";
 import morgan from "morgan";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 
 // router imports
 
@@ -15,6 +16,7 @@ import authRouter from "./routes/authRouter.js";
 // middleware imports
 
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
+import { authenticateUser } from "./middlewares/authMiddleware.js";
 
 //middlewares.............................................................................................................
 
@@ -24,10 +26,11 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 app.use(express.json());
+app.use(cookieParser());
 
 // CRUD API CALLS.............................................................................................................
 
-app.use("/api/v1/jobs", jobRouter);
+app.use("/api/v1/jobs", authenticateUser, jobRouter);
 app.use("/api/v1/auth", authRouter);
 
 // page not found and generic error middleware.............................................................................
